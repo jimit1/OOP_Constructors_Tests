@@ -1,7 +1,7 @@
 // const Manager = require("./lib/Manager");
 // const Engineer = require("./lib/Engineer");
 // const Intern = require("./lib/Intern");
-// const inquirer = require("inquirer");
+const inquirer = require("inquirer");
 // const path = require("path");
 // const fs = require("fs");
 
@@ -9,6 +9,17 @@
 // const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 // const render = require("./lib/htmlRenderer");
+
+inquirer
+  .prompt([
+    {
+      type: "expand",
+      name: "name",
+      message: "",
+      choices: ["yes", "no", "hello"],
+    },
+  ])
+  .then((res) => console.log(res));
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -32,14 +43,3 @@
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
-
-const Employee = require("./lib/Employee");
-
-const Jim = new Employee("Jim", 32, "jimit1@gmail.com");
-
-console.log(Jim);
-
-Jim.id = 1;
-Jim.email = "dhruvinaik99@gmail.com";
-
-console.log(Jim);
