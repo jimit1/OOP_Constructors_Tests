@@ -10,17 +10,6 @@ const inquirer = require("inquirer");
 
 // const render = require("./lib/htmlRenderer");
 
-inquirer
-  .prompt([
-    {
-      type: "expand",
-      name: "name",
-      message: "",
-      choices: ["yes", "no", "hello"],
-    },
-  ])
-  .then((res) => console.log(res));
-
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
