@@ -22,6 +22,7 @@ const createEmployee = () => {
         type: "input",
         name: "name",
         message: `What is the name of the new employee`,
+        validate: checkName,
       },
       {
         type: "list",
@@ -32,7 +33,7 @@ const createEmployee = () => {
     ])
     .then((res) => {
       if (res.role === "Engineer") {
-        q = `What ${res.name}'s Github username?`;
+        q = `What is ${res.name}'s Github username?`;
         employee = new Engineer(res.name);
       } else if (res.role === "Manager") {
         q = `What is ${res.name}'s Office Number?`;
@@ -50,11 +51,13 @@ const createEmployee = () => {
             type: "input",
             name: "id",
             message: `What is the employee id of ${res.name}`,
+            validate: checkId,
           },
           {
             type: "input",
             name: "email",
             message: `What is the email of ${res.name}`,
+            validate: checkAnswer,
           },
           {
             type: "input",
@@ -102,6 +105,30 @@ const renderEmployees = () => {
         });
       }
     });
+};
+
+const checkAnswer = (input) => {
+  if (input.includes("@") && input.includes(".")) {
+    return true;
+  } else {
+    return "Email is in incorrect format";
+  }
+};
+
+const checkId = (input) => {
+  if (isNaN(parseInt(input))) {
+    return "ID should be a number";
+  } else {
+    return true;
+  }
+};
+
+const checkName = (input) => {
+  if (input === "") {
+    return "Please enter a valid name";
+  } else {
+    return true;
+  }
 };
 
 renderEmployees();
