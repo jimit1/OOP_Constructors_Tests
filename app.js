@@ -97,7 +97,7 @@ const renderEmployees = () => {
           if (err) {
             throw err;
           } else {
-            console.log("Saved!");
+            console.log("Saved the html file with all employees");
           }
         });
       }
